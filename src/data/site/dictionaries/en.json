@@ -1,0 +1,89 @@
+{
+  "header": {
+    "siteName": {
+      "text": "Arb.",
+      "url": "/en"
+    },
+    "nav": [
+      {
+        "name": "Home",
+        "url": "/en"
+      },
+      {
+        "name": "Blogs",
+        "url": "/en/blogs"
+      },
+      {
+        "name": "Projects",
+        "url": "/en/projects"
+      },
+      {
+        "name": "Bookmarks",
+        "url": "/en/bookmarks"
+      },
+      {
+        "name": "Poems",
+        "url": "/en/poems"
+      },
+      {
+        "name": "Images",
+        "url": "/en/images"
+      },
+      {
+        "name": "About",
+        "url": "/en/about"
+      },
+      {
+        "name": "Feedback",
+        "url": "/en/feedback"
+      },
+      {
+        "name": "Admin",
+        "url": "/en/admin/feedback"
+      }
+    ]
+  },
+  "page": {
+    "home": {
+      "name": {
+        "first": "I code,",
+        "second": "therefore I am!",
+        "third": "Home"
+      },
+      "description": "Hi, I'm Arb Rahim Badsa. I live in a tiny corner of the web. I write, design & code. I love to play with new problems like toys!",
+      "knowMoreAboutMe": "Know more about me",
+      "downloadCV": "Download Resume",
+      "activities": "Activities",
+      "allActivities": "All Activities",
+      "recentBlogs": "Recent Blogs",
+      "allBlogs": "All Blogs"
+    },
+    "blogs": {
+      "name": "Blogs",
+      "description": "Aritcles that you'll love reading! Starting from tech to life, I enjoy curving the letters on the pages of the web.",
+      "minRead": "min read",
+      "readMore": "Read more"
+    },
+    "projects": {
+      "name": "Projects",
+      "description": "Displays some of my remarkable projects that I've worked on. I am a hobbyist programmer. I don't rest on weekend. I code, therefore I am!"
+    },
+    "bookmarks": {
+      "name": "Bookmarks",
+      "description": "Links and websites that I found useful. I bookmark them here so that I can find them easily when I need them."
+    },
+    "poems": {
+      "name": "Poems",
+      "description": "These are some of the best poems I've read so far. The list updates really frequently as I love reading poems a lot.",
+      "readMore": "Read more"
+    },
+    "images": {
+      "name": "Images",
+      "description": "Scenes that attracted my sould and pinned my eyes to them. I love to capture the moments that I find beautiful."
+    },
+    "about": {
+      "name": "About",
+      "description": "A friendly about page under construction."
+    }
+  }
+}

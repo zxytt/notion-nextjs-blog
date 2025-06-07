@@ -1,0 +1,89 @@
+{
+  "header": {
+    "siteName": {
+      "text": "Arb.",
+      "url": "/es"
+    },
+    "nav": [
+      {
+        "name": "Inicio",
+        "url": "/es"
+      },
+      {
+        "name": "Blogs",
+        "url": "/es/blogs"
+      },
+      {
+        "name": "Proyectos",
+        "url": "/es/projects"
+      },
+      {
+        "name": "Marcadores",
+        "url": "/es/bookmarks"
+      },
+      {
+        "name": "Poemas",
+        "url": "/es/poems"
+      },
+      {
+        "name": "Imágenes",
+        "url": "/es/images"
+      },
+      {
+        "name": "Sobre",
+        "url": "/es/about"
+      },
+      {
+        "name": "Feedback",
+        "url": "/es/feedback"
+      },
+      {
+        "name": "Admin",
+        "url": "/es/admin/feedback"
+      }
+    ]
+  },
+  "page": {
+    "home": {
+      "name": {
+        "first": "¡Yo codifico,",
+        "second": "por lo tanto, existo!",
+        "third": "Inicio"
+      },
+      "description": "Estos son algunos de los mejores poemas que he leído hasta ahora. La lista se actualiza con mucha frecuencia ya que me encanta leer poemas.",
+      "knowMoreAboutMe": "Conocer más sobre mí",
+      "downloadCV": "Descargar Resumen",
+      "activities": "Actividades",
+      "recentBlogs": "Blogs recientes",
+      "allBlogs": "Todos los blogs",
+      "allActivities": "Todas las actividades"
+    },
+    "blogs": {
+      "name": "Blogs",
+      "description": "Estos son algunos de los mejores poemas que he leído hasta ahora. La lista se actualiza con mucha frecuencia ya que me encanta leer poemas.",
+      "minRead": "min de lectura",
+      "readMore": "Leer más"
+    },
+    "projects": {
+      "name": "Proyectos",
+      "description": "Estos son algunos de los mejores poemas que he leído hasta ahora. La lista se actualiza con mucha frecuencia ya que me encanta leer poemas."
+    },
+    "bookmarks": {
+      "name": "Marcadores",
+      "description": "Estos son algunos de los mejores poemas que he leído hasta ahora. La lista se actualiza con mucha frecuencia ya que me encanta leer poemas."
+    },
+    "poems": {
+      "name": "Poemas",
+      "description": "Estos son algunos de los mejores poemas que he leído hasta ahora. La lista se actualiza con mucha frecuencia ya que me encanta leer poemas.",
+      "readMore": "Leer más"
+    },
+    "images": {
+      "name": "Imágenes",
+      "description": "Estos son algunos de los mejores poemas que he leído hasta ahora. La lista se actualiza con mucha frecuencia ya que me encanta leer poemas."
+    },
+    "about": {
+      "name": "Sobre",
+      "description": "Estos son algunos de los mejores poemas que he leído hasta ahora. La lista se actualiza con mucha frecuencia ya que me encanta leer poemas."
+    }
+  }
+}
