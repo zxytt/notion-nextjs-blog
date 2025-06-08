@@ -18,7 +18,7 @@ export default function Header({
   return (
     <header
       className={cn(
-        'p-4 border border-blue-100 rounded-lg flex items-center justify-between relative z-50 bg-transparent backdrop-blur-sm bg-opacity-10',
+        'px-4 py-2 border border-blue-100 rounded-xl flex items-center justify-between bg-transparent backdrop-blur-2xl shadow-sm shadow-blue-100/50 sm:px-8 sm:py-6 sm:rounded-none sm:shadow-none sm:border-none sm:bg-white/90 sm:backdrop-blur-none',
         className,
       )}
     >

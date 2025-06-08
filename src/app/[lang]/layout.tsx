@@ -39,8 +39,8 @@ export default async function RootLayout({
       {/* <Header data={header} className="hidden sm:flex rounded-none" /> */}
       <MobileMenu data={header} />
 
-      <main className="flex flex-col p-16 bg-white sm:px-4 sm:pb-4 sm:pt-0 sm:overflow-x-hidden">
-        <Header data={header} className="sm:hidden" />
+      <main className="relative max-w-[1024px] m-auto flex flex-col bg-white sm:px-4 sm:pb-4 sm:pt-0 sm:overflow-x-hidden">
+        <Header data={header} className="sm:hidden sticky top-0 z-100" />
         <Blob
           y="80px"
           className="left-[300px] sm:left-[50px] sm:h-[100px] sm:w-[100px] z-0"

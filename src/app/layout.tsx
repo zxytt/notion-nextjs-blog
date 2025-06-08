@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   creator: 'Arb Rahim Badsa',
   category: 'technology',
   applicationName: 'Arb Rahim Badsa',
-  description: `Discover the portfolio of Arb Rahim Badsa (Arbizen), a talented JavaScript developer with expertise in React.js, Next.js, TypeScript, Supabase, Figma, and more. Explore a range of projects showcasing Arbizen's skills in web development, blogs, liked poems, images and more.`,
+  description: `Discover the portfolio of Arb Rahim Badsa (Arbizen), a talented JavaScript developer with expertise in React.js, Next.js, TypeScript, Supabase, Figma, and more. Explore a range of projects showcasing Arbizen's skills in web development, blogs, liked images and more.`,
   keywords: [
     'Portfolio',
     'Arb Rahim Badsa',

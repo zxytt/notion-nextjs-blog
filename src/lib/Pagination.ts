@@ -1,3 +1,8 @@
+import NodeCache from 'node-cache';
+
+// 创建一个全局缓存实例
+const myCache = new NodeCache();
+
 export default class Pagination {
   constructor(
     private readonly params: any,
@@ -17,8 +22,19 @@ export default class Pagination {
     } else {
       url = `${process.env.NEXT_PUBLIC_API_URL}/api/data/${this.pageName}/${cursor}?page=${page}&limit=${limit}&category=${category}&order=${order}`;
     }
+
+    // 检查缓存中是否存在数据
+    const cachedData = myCache.get(url);
+    if (cachedData) {
+      return cachedData;
+    }
+
     const res = await fetch(url);
     const data = await res.json();
+
+    // 将数据存入缓存
+    myCache.set(url, data);
+
     return data;
   }
   nextPageUrl(data: any) {

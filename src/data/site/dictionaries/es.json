@@ -1,7 +1,7 @@
 {
   "header": {
     "siteName": {
-      "text": "Arb.",
+      "text": "Jason.",
       "url": "/es"
     },
     "nav": [
@@ -16,14 +16,6 @@
       {
         "name": "Proyectos",
         "url": "/es/projects"
-      },
-      {
-        "name": "Marcadores",
-        "url": "/es/bookmarks"
-      },
-      {
-        "name": "Poemas",
-        "url": "/es/poems"
       },
       {
         "name": "Imágenes",
@@ -53,10 +45,8 @@
       "description": "Estos son algunos de los mejores poemas que he leído hasta ahora. La lista se actualiza con mucha frecuencia ya que me encanta leer poemas.",
       "knowMoreAboutMe": "Conocer más sobre mí",
       "downloadCV": "Descargar Resumen",
-      "activities": "Actividades",
       "recentBlogs": "Blogs recientes",
-      "allBlogs": "Todos los blogs",
-      "allActivities": "Todas las actividades"
+      "allBlogs": "Todos los blogs"
     },
     "blogs": {
       "name": "Blogs",
@@ -67,15 +57,6 @@
     "projects": {
       "name": "Proyectos",
       "description": "Estos son algunos de los mejores poemas que he leído hasta ahora. La lista se actualiza con mucha frecuencia ya que me encanta leer poemas."
-    },
-    "bookmarks": {
-      "name": "Marcadores",
-      "description": "Estos son algunos de los mejores poemas que he leído hasta ahora. La lista se actualiza con mucha frecuencia ya que me encanta leer poemas."
-    },
-    "poems": {
-      "name": "Poemas",
-      "description": "Estos son algunos de los mejores poemas que he leído hasta ahora. La lista se actualiza con mucha frecuencia ya que me encanta leer poemas.",
-      "readMore": "Leer más"
     },
     "images": {
       "name": "Imágenes",

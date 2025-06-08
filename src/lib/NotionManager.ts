@@ -6,12 +6,11 @@ export class NotionManager {
   constructor(
     private readonly notion: Client,
     private readonly databases: {
-      name: 'blogs' | 'activities' | 'bookmarks' | 'projects' | 'images' | 'poems';
+      name: 'blogs' | 'projects' | 'images';
       id: string;
     }[],
   ) {}
   async getNextCursorData(cursor: string, name: string) {
-    console.log('xx', cursor, name)
     const db = await this.notion.databases.query({
       database_id: this.databases.find((db) => db.name === name)?.id!,
       start_cursor: cursor,
@@ -85,26 +84,7 @@ export class NotionManager {
   }
   getFormattedData(db: any, name: string) {
     let formatted = null;
-    if (name === 'activities') {
-      formatted = db.results.map((page: any) => {
-        if (!isFullPage(page)) {
-          throw new Error('Notion page is not a full page');
-        }
-
-        return {
-          id: page.id,
-          type:
-            'multi_select' in page.properties.type
-              ? page.properties.type.multi_select.map((tag) => tag.name).join()
-              : [],
-
-          name: page.properties?.name?.title[0]?.plain_text || '',
-
-          date: page.properties?.createdAt?.created_time || '',
-          link: page.properties?.link?.rich_text[0]?.plain_text || '/',
-        };
-      });
-    } else if (name === 'blogs') {
+    if (name === 'blogs') {
       formatted = db.results.map((page: any) => {
         if (!isFullPage(page)) {
           throw new Error('Notion page is not a full page');
@@ -138,26 +118,6 @@ export class NotionManager {
           slug: encodedSlug,
           decodedSlug: slug,
           isPublished: page.properties?.isPublished?.checkbox || false,
-        };
-      });
-    } else if (name === 'bookmarks') {
-      formatted = db.results.map((page: any) => {
-        if (!isFullPage(page)) {
-          throw new Error('Notion page is not a full page');
-        }
-
-        return {
-          id: page.id,
-          type:
-            'multi_select' in page.properties.type
-              ? page.properties.type.multi_select.map((tag) => tag.name)
-              : [],
-
-          name: page.properties?.name?.title[0]?.plain_text || '',
-
-          link: page.properties?.link?.rich_text[0]?.plain_text || '',
-          description:
-            page.properties?.description?.rich_text[0]?.plain_text || '',
         };
       });
     } else if (name === 'projects') {
@@ -200,42 +160,6 @@ export class NotionManager {
           slug: encodedSlug,
         };
       });
-    } else if (name === 'poems') {
-      formatted = db.results.map((page: any) => {
-        if (!isFullPage(page)) {
-          throw new Error('Notion page is not a full page');
-        }
-
-        const slug = page.properties?.title?.title[0]?.plain_text
-          .trim()
-          .toLowerCase()
-          .replace(/-/g, ' ')
-          .replace(/\s\s+/g, ' ')
-          .replace(/ /g, '-');
-
-        // url encode
-        const encodedSlug = encodeURIComponent(slug) + `?id=${page.id}`;
-
-        return {
-          id: page.id,
-          title: page.properties?.title?.title[0]?.plain_text || '',
-          date: page.properties?.createdAt?.created_time || '',
-          categories:
-            'multi_select' in page.properties.category
-              ? page.properties.category.multi_select.map((tag) => tag.name)
-              : [],
-          description:
-            page.properties?.description?.rich_text[0]?.plain_text || '',
-          image:
-            page.cover?.external?.url ||
-            page.cover?.file?.url ||
-            'https://source.unsplash.com/a-person-standing-on-top-of-a-mountain-nMzbnMzMjYU',
-          author: page.properties?.author?.rich_text[0]?.plain_text || '',
-          slug: encodedSlug,
-          decodedSlug: slug,
-          isPublished: page.properties?.isPublished?.checkbox || false,
-        };
-      });
     } else if (name === 'images') {
       formatted = db.results.map((page: any) => {
         if (!isFullPage(page)) {
@@ -269,10 +193,7 @@ export const notionManager = new NotionManager(
   new Client({ auth: process.env.NOTION_TOKEN! }),
   [
     { name: 'blogs', id: process.env.NOTION_BLOG_DATABASE_ID! },
-    { name: 'activities', id: process.env.NOTION_ACTIVITY_DATABASE_ID! },
-    { name: 'bookmarks', id: process.env.NOTION_BOOKMARK_DATABASE_ID! },
     { name: 'projects', id: process.env.NOTION_PROJECT_DATABASE_ID! },
     { name: 'images', id: process.env.NOTION_IMAGE_DATABASE_ID! },
-    { name: 'poems', id: process.env.NOTION_POEM_DATABASE_ID! },
   ],
 );

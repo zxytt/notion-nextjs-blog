@@ -16,18 +16,6 @@ export const headerItems: HeaderItem[] = [
     route: '/projects',
   },
   {
-    name: 'Bookmarks',
-    route: '/bookmarks',
-  },
-  {
-    name: 'Poems',
-    route: '/poems',
-  },
-  {
-    name: 'Images',
-    route: '/images',
-  },
-  {
     name: 'About',
     route: '/about',
   },

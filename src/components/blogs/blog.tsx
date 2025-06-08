@@ -9,46 +9,45 @@ import dateformat from "dateformat";
 
 export default function Blog(props: BlogType) {
     return (
-      <Card className="p-16 sm:p-8">
-        <div className="flex gap-8 sm:flex-col">
+      <Card>
+        <div className="flex gap-8 md:flex-col">
           <Link className="flex-none" href={`/${props.lang}/blogs/${props.slug}`}>
             <Image
-              unoptimized
               src={props.image!}
               alt="blog"
-              width={360}
-              height={240}
-              className="rounded-md max-h-[240px] object-cover"
+              width={300}
+              height={200}
+              className="rounded-md h-[200px]"
               placeholder="blur"
               blurDataURL="/blur-placeholder.png"
             />
           </Link>
-          <div className="flex flex-col gap-6">
-            <div className="flex flex-col gap-2">
-              <div className="flex gap-2 flex-wrap">
-                <Badge className="bg-blue-100 text-blue-600">
-                  {props.readTime} {props.page.blogs.minRead}
-                </Badge>
-                {props?.categories?.map((category: string) => (
-                  <Badge key={category} className="bg-red-100 text-red-500">
-                    {category}
-                  </Badge>
-                ))}
-              </div>
-              <span className="text-xs text-slate-600">
-                {dateformat(props.date, 'ddS mmmm, yyyy')}
-              </span>
-            </div>
+          <div className="flex flex-col justify-between gap-4 grow">
             <Link
               href={`/${props.lang}/blogs/${props.slug}`}
               className="hover:underline"
             >
-              <h2 className="text-[36px] font-extrabold leading-tight sm:text-2xl sm:font-bold">
+              <h3 className="text-[24px] font-extrabold leading-tight sm:text-2xl sm:font-bold">
                 {props.title}
-              </h2>
+              </h3>
             </Link>
+            <div className="flex gap-2 flex-wrap">
+              {props?.categories?.map((category: string) => (
+                <Badge key={category} className="bg-red-100 text-red-500">
+                  {category}
+                </Badge>
+              ))}
+            </div>
             <p className="font-medium text-slate-600">{props.description}</p>
             <div className="flex justify-between">
+              <div>
+                <span className="mr-2 text-xs text-slate-600">
+                  {dateformat(props.date, 'ddS mmmm, yyyy')}
+                </span>
+                <Badge className="bg-blue-100 text-blue-600">
+                  {props.readTime} {props.page.blogs.minRead}
+                </Badge>
+              </div>
               <Link
                 href={`/${props.lang}/blogs/${props.slug}`}
                 className="flex items-center gap-1 text-xs font-bold leading-tight text-blue-500 hover:underline"

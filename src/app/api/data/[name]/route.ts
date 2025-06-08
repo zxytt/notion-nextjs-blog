@@ -49,10 +49,6 @@ export async function GET(req: Request, context: { params: { name: string } }) {
           if (item.stack) {
             return item.stack.includes(category); // filter by category - projects
           }
-        } else {
-          if (item.type) {
-            return item.type.includes(category); // filter by category - bookmarks
-          }
         }
       });
       if (data) {

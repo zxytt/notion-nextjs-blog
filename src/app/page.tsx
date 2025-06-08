@@ -14,11 +14,6 @@ export const metadata = {
 export const dynamic = 'force-dynamic';
 
 export default async function Home() {
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/api/data/activities`,
-  );
-  const data = await res.json();
-  const activities: Activity[] = data.activities.data;
 
   return (
     <div>
@@ -40,24 +35,6 @@ export default async function Home() {
           </Link>
         }
       />
-      <div>
-        <SubTitle title="Activities" seeMoreText="See more" />
-        <section className="pt-[64px] flex flex-col gap-4 sm:pt-[32px]">
-          {activities.map((activity: Activity) => (
-            <Link key={activity.id} href="/">
-              <Card className="px-6 py-[20px]">
-                <h3 className="font-semibold text-base">{activity.name}</h3>
-                <div className="flex gap-2 mt-1 items-center">
-                  <span className="text-xs">{activity.date}</span>
-                  <Badge className="bg-red-100 text-red-500">
-                    {activity.type}
-                  </Badge>
-                </div>
-              </Card>
-            </Link>
-          ))}
-        </section>
-      </div>
     </div>
   );
 }

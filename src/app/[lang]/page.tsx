@@ -21,10 +21,11 @@ import { SkillBeam } from '@/components/skill-beam';
 import CustomImage from '@/components/gallery-image';
 import { Client } from '@notionhq/client';
 import PublicFeedbackList from '@/components/feedback/public-feedback-list';
+import Project from './projects/project'
 
 export const metadata = {
   title: `Home — Arb Rahim Badsa's Activities and Portfolio`,
-  description: `Discover the portfolio of Arb Rahim Badsa (Arbizen), a talented JavaScript developer with expertise in React.js, Next.js, TypeScript, Supabase, Figma, and more. Explore a range of projects showcasing Arbizen's skills in web development, blogs, liked poems, images and more.`,
+  description: `Discover the portfolio of Arb Rahim Badsa (Arbizen), a talented JavaScript developer with expertise in React.js, Next.js, TypeScript, Supabase, Figma, and more. Explore a range of projects showcasing Arbizen's skills in web development, blogs, liked images and more.`,
 };
 
 const siteJsonLd = {
@@ -51,86 +52,16 @@ export default async function Home({
   params: { lang: string };
 }) {
 
-  const pageName = `activities`;
-  const pagination = new Pagination({ limit: 10 }, pageName);
+  const pageName = `projects`;
+  const pagination = new Pagination({ limit: 3 }, pageName);
   const data = await pagination.getCurrentPageData('desc');
 
-  const activities: Activity[] = data[pageName]?.data;
+  const projects = data[pageName]?.data;
 
   const blogs = 'blogs';
-
-  const paginationBlogs = new Pagination({ limit: 2 }, blogs);
-
+  const paginationBlogs = new Pagination({ limit: 3 }, blogs);
   const dataBlogs = await paginationBlogs.getCurrentPageData('desc');
-
   const blogsData: BlogType[] = dataBlogs[blogs]?.data;
-
-  // Fetch recent images
-  const images = 'images';
-  const paginationImages = new Pagination({ limit: 3 }, images);
-  const dataImages = await paginationImages.getCurrentPageData('desc');
-  const imagesData: ImageType[] = dataImages[images]?.data;
-
-  // Fetch recent answered feedback/questions
-  const FEEDBACK_DATABASE_ID = process.env.NOTION_FEEDBACK_DATABASE_ID;
-  let recentFeedbacks: Feedback[] = [];
-
-  try {
-    if (FEEDBACK_DATABASE_ID) {
-      const notion = new Client({ auth: process.env.NOTION_TOKEN! });
-      const response = await notion.databases.query({
-        database_id: FEEDBACK_DATABASE_ID,
-        filter: {
-          and: [
-            {
-              property: 'response',
-              rich_text: {
-                is_not_empty: true,
-              },
-            },
-            {
-              property: 'isResolved',
-              checkbox: {
-                equals: true,
-              },
-            },
-            {
-              property: 'publishResponse',
-              checkbox: {
-                equals: true,
-              },
-            },
-          ],
-        },
-        sorts: [
-          {
-            property: 'createdAt',
-            direction: 'descending',
-          },
-        ],
-        page_size: 3, // Limit to 3 recent feedbacks
-      });
-
-      recentFeedbacks = response.results.map((page: any) => {
-        const properties = page.properties;
-        return {
-          id: page.id,
-          name: properties.name?.title[0]?.plain_text || '',
-          email: properties.email?.rich_text[0]?.plain_text || '',
-          message: properties.message?.rich_text[0]?.plain_text || '',
-          date: properties.createdAt?.date?.start || new Date().toISOString(),
-          type:
-            properties.type?.select?.name === 'Question'
-              ? 'question'
-              : 'feedback',
-          isResolved: properties.isResolved?.checkbox || false,
-          response: properties.response?.rich_text[0]?.plain_text || '',
-        };
-      });
-    }
-  } catch (error) {
-    console.error('Error fetching feedbacks:', error);
-  }
 
   const supportedLang = supportedLocales.includes(lang)
     ? lang
@@ -185,7 +116,51 @@ export default async function Home({
         </div>
       </div>
 
-      <div className="mb-8 bg-gradient-to-r from-blue-50 to-indigo-50 p-6 rounded-lg border border-blue-100 shadow-sm">
+      <div className="mt-4">
+        <SubTitle
+          title={dictionary.page.home.recentBlogs}
+          seeMoreText={dictionary.page.home.allBlogs}
+          seeMoreLink={`/${lang}/blogs`}
+        />
+      </div>
+      <div className="mt-4 w-full">
+        <div className="grid grid-cols-1 gap-4">
+          {blogsData?.map((blog: BlogType) => {
+            if (blog.isPublished === false) return null;
+            return (
+              <Blog
+                id={blog.id}
+                slug={blog.slug}
+                title={blog.title}
+                categories={blog.categories}
+                date={blog.date}
+                description={blog.description}
+                image={blog.image}
+                key={blog.id}
+                readTime={blog.readTime}
+                lang={lang}
+                page={dictionary.page}
+              />
+            );
+          })}
+        </div>
+      </div>
+
+      <div className='mt-8'>
+        <SubTitle
+          title={dictionary.page.home.recentProjects}
+          seeMoreText={dictionary.page.home.allProjects}
+        />
+      </div>
+      <div className="mt-4 w-full">
+        <div className="grid grid-cols-1 gap-4">
+          {projects.map((project: any) => (
+            <Project key={project.id} {...project} lang={lang} />
+          ))}
+        </div>
+      </div>
+
+      <div className="mt-4 bg-gradient-to-r from-blue-50 to-indigo-50 p-6 rounded-lg border border-blue-100 shadow-sm">
         <div className="flex flex-wrap items-center justify-between gap-4">
           <div>
             <h2 className="text-xl font-bold text-blue-700 mb-1">
@@ -201,96 +176,6 @@ export default async function Home({
           >
             Give Feedback <ArrowRight size={16} />
           </Link>
-        </div>
-      </div>
-
-      {/* Recent answered feedback/questions section */}
-      {recentFeedbacks.length > 0 && (
-        <div className="mb-8">
-          <SubTitle
-            title="Recently Answered Questions"
-            seeMoreText="View All"
-            seeMoreLink={`/${lang}/feedback`}
-          />
-          <div className="mt-6">
-            <PublicFeedbackList feedbacks={recentFeedbacks} />
-          </div>
-        </div>
-      )}
-
-      <div>
-        <SubTitle
-          title={dictionary.page.home.activities}
-          seeMoreText={dictionary.page.home.allActivities}
-        />
-        <section className="pt-[64px] flex flex-col gap-4 sm:pt-[32px]">
-          {activities.map((activity: Activity) => (
-            <Link key={activity.id} href={activity.link!} target="_blank">
-              <Card className="px-6 py-[20px]">
-                <h3 className="font-semibold text-base">{activity.name}</h3>
-                <div className="flex gap-2 mt-1 items-center">
-                  <span className="text-xs text-slate-600">
-                    {dateformat(activity.date, 'ddS mmm, yyyy')} at{' '}
-                    {dateformat(activity.date, 'h:MM TT')}
-                  </span>
-                  <Badge className="bg-red-100 text-red-500">
-                    {activity.type}
-                  </Badge>
-                </div>
-              </Card>
-            </Link>
-          ))}
-        </section>
-      </div>
-      <div className="mt-8">
-        <SubTitle
-          title={dictionary.page.home.recentBlogs}
-          seeMoreText={dictionary.page.home.allBlogs}
-          seeMoreLink={`/${lang}/blogs`}
-        />
-      </div>
-      <div className="flex flex-col gap-4 mt-8">
-        {blogsData?.map((blog: BlogType) => {
-          if (blog.isPublished === false) return null;
-          return (
-            <Blog
-              id={blog.id}
-              slug={blog.slug}
-              title={blog.title}
-              categories={blog.categories}
-              date={blog.date}
-              description={blog.description}
-              image={blog.image}
-              key={blog.id}
-              readTime={blog.readTime}
-              lang={lang}
-              page={dictionary.page}
-            />
-          );
-        })}
-      </div>
-
-      <div className="mt-8">
-        <SubTitle
-          title={dictionary.page.images.name}
-          seeMoreText="All Images"
-          seeMoreLink={`/${lang}/images`}
-        />
-      </div>
-      <div className="mt-8 w-full">
-        <div className="grid grid-cols-3 gap-4 sm:grid-cols-1">
-          {imagesData?.map((image: ImageType) => (
-            <CustomImage
-              src={image.src}
-              alt={image.alt}
-              key={image.id}
-              height={300}
-              width={500}
-              className="h-full w-full"
-              link={`/${lang}/images/${image.id}`}
-              date={image.date}
-            />
-          ))}
         </div>
       </div>
 

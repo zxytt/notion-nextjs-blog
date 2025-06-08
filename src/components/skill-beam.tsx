@@ -37,15 +37,15 @@ export function SkillBeam() {
 
   return (
     <div
-      className="relative flex h-[350px] sm:h-[300px] sm:mb-20 items-center justify-center overflow-hidden w-full"
+      className="relative flex h-[306px] pb-4 sm:h-[300px] sm:mb-8 items-center justify-center overflow-hidden w-full"
       ref={containerRef}
     >
       <div className="flex size-full flex-col max-w-lg max-h-[200px] items-stretch justify-between gap-10">
         <div className="flex flex-row items-center justify-between">
           <Circle ref={div1Ref}>
             <Image
-              alt="figma-skill-arb"
-              src={'/figma.png'}
+              alt="react-skill-arb"
+              src={'/react.png'}
               height={50}
               width={50}
               className="rounded-full"
@@ -53,7 +53,7 @@ export function SkillBeam() {
           </Circle>
           <Circle ref={div5Ref}>
             <Image
-              alt="tailwind-skill-arb"
+              alt="tailwind-skill-jason"
               src={'/tailwind.png'}
               height={50}
               width={50}
@@ -76,12 +76,13 @@ export function SkillBeam() {
           </Circle>
           <Circle ref={div6Ref}>
             <Image
-              alt="react-skill-arb"
-              src={'/react.png'}
+              alt="notion-skill-arb"
+              src={'/notion.png'}
               height={50}
               width={50}
               className="rounded-full"
             />
+            
           </Circle>
         </div>
         <div className="flex flex-row items-center justify-between">
@@ -204,7 +205,7 @@ const Icons = {
           y2="160.5"
         >
           <stop stopColor="white"></stop>
-          <stop offset="1" stopColor="white" stop-opacity="0"></stop>
+          <stop offset="1" stopColor="white" stopOpacity="0"></stop>
         </linearGradient>
         <linearGradient
           gradientUnits="userSpaceOnUse"
@@ -215,7 +216,7 @@ const Icons = {
           y2="106.875"
         >
           <stop stopColor="white"></stop>
-          <stop offset="1" stopColor="white" stop-opacity="0"></stop>
+          <stop offset="1" stopColor="white" stopOpacity="0"></stop>
         </linearGradient>
       </defs>
     </svg>
