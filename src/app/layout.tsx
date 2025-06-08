@@ -4,6 +4,7 @@ import { ThemeProvider } from '@/components/theme-provider';
 import { GeistSans } from 'geist/font/sans';
 import Script from 'next/script';
 import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from "@vercel/speed-insights/next"
 import { cn } from '@/lib/utils';
 
 export const metadata: Metadata = {
@@ -49,6 +50,7 @@ export default async function RootLayout({
           {children}
         </ThemeProvider>
         <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
