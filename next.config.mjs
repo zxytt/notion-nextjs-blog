@@ -43,15 +43,17 @@ const nextConfig = {
   },
    // 图片优化配置
   // images: {
-  //   formats: ['image/webp'],
-  //   minimumCacheTTL: 86400,  // 1天缓存
-  //   deviceSizes: [640, 750, 828, 1080, 1200, 1920],
-  //   imageSizes: [16, 32, 48, 64, 96],
+    // formats: ['image/webp'],
+    // minimumCacheTTL: 86400,  // 1天缓存
+    // deviceSizes: [640, 750, 828, 1080, 1200, 1920],
+    // imageSizes: [16, 32, 48, 64, 96],
+    // domains: ['source.unsplash.com', 'images.unsplash.com'],
   // },
 
   // 构建产物优化
   productionBrowserSourceMaps: false,  // 关闭SourceMap
   output: 'standalone',  // 独立输出模式
+  compress: true,  // 压缩构建产物
   
   // SWC编译优化
   swcMinify: true, 

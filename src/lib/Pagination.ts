@@ -1,7 +1,11 @@
 import NodeCache from 'node-cache';
 
 // 创建一个全局缓存实例
-const myCache = new NodeCache();
+const myCache = new NodeCache({
+  stdTTL: 3600, // 缓存数据在x秒后过期
+  checkperiod: 600, // 检查过期数据的间隔时间（秒）
+  maxKeys: 100
+});
 
 export default class Pagination {
   constructor(
@@ -25,6 +29,7 @@ export default class Pagination {
 
     // 检查缓存中是否存在数据
     const cachedData = myCache.get(url);
+    console.log('cachedData', url, cachedData);
     if (cachedData) {
       return cachedData;
     }

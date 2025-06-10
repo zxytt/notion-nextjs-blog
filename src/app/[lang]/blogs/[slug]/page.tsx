@@ -178,7 +178,7 @@ export default async function BlogPage({
             components={customComponents}
             className="prose w-full min-w-[800px] sm:min-w-full"
           >
-            {mdString}
+            {typeof mdString === 'string' ? mdString : JSON.stringify(mdString)}
           </Markdown>
         </article>
       </div>

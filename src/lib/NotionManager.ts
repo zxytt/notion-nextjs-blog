@@ -2,6 +2,16 @@
 import { Client, isFullPage } from '@notionhq/client';
 import { NotionToMarkdown } from 'notion-to-md';
 import { getPlaiceholder } from 'plaiceholder';
+import NodeCache from 'node-cache';
+
+// 创建一个全局缓存实例
+const commonConfig = {
+  stdTTL: 3600, // 缓存数据在x秒后过期
+  checkperiod: 600, // 检查过期数据的间隔时间（秒）
+  maxKeys: 100, // 最大缓存数量
+}
+const mdCache = new NodeCache(commonConfig); 
+const idCache = new NodeCache(commonConfig); 
 export class NotionManager {
   constructor(
     private readonly notion: Client,
@@ -20,7 +30,6 @@ export class NotionManager {
   async getPageBySlug(slug: string) {
     try {
       const n2m = new NotionToMarkdown({ notionClient: this.notion });
-
       const id = slug.split('#')?.[1] || '';
       const blocks = await n2m.pageToMarkdown(id);
       const mdString = n2m.toMarkdownString(blocks);
@@ -34,13 +43,25 @@ export class NotionManager {
     }
   }
   async getPageById(id: string) {
+    const cachedData = idCache.get(id);
+    console.log('getPageById', id, cachedData);
+    if (cachedData) {
+      return cachedData
+    }
     const page = await this.notion.pages.retrieve({ page_id: id });
+    idCache.set(id, page);
     return page;
   }
   async getMdStringById(id: string) {
+    const cachedData = mdCache.get(id);
+    console.log('getMdStringById', id, cachedData);
+    if (cachedData) {
+      return cachedData
+    }
     const n2m = new NotionToMarkdown({ notionClient: this.notion });
     const blocks = await n2m.pageToMarkdown(id);
     const mdString = n2m.toMarkdownString(blocks);
+    mdCache.set(id, mdString.parent);
     return mdString.parent;
   }
   async getFormatted(name: string) {

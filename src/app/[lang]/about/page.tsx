@@ -106,7 +106,7 @@ export default async function About({ params, searchParams }: pageProps) {
             components={customComponents}
             className="prose w-full min-w-[800px] sm:min-w-full"
           >
-            {mdString}
+          {typeof mdString === 'string' ? mdString : JSON.stringify(mdString)}
           </Markdown>
         </Card>
       </article>
