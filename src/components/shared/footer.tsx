@@ -19,7 +19,7 @@ export default function Footer({
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="flex flex-col mt-16 relative z-50">
+    <footer className="flex flex-col mt-10 relative z-50">
       <div className="flex justify-between mb-4">
         <RotatingQuote className="italic text-slate-800" />
         <div className="flex gap-4 text-slate-800">

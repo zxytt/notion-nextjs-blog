@@ -29,12 +29,13 @@ export default class Pagination {
 
     // 检查缓存中是否存在数据
     const cachedData = myCache.get(url);
-    console.log('cachedData', url, cachedData);
     if (cachedData) {
       return cachedData;
     }
 
-    const res = await fetch(url);
+    const res = await fetch(url, {
+      cache: 'force-cache',
+    });
     const data = await res.json();
 
     // 将数据存入缓存

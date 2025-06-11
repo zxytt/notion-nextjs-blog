@@ -26,7 +26,7 @@ export default function Header({
         <Image
           className="rounded-full"
           src="/arb.png"
-          alt="A professional potrait of Arb Rahim Badsa"
+          alt="A professional potrait of Jason Zhang"
           height={50}
           width={50}
         />
@@ -34,7 +34,7 @@ export default function Header({
           <Link href={data.siteName.url}>{data.siteName.text}</Link>
         </h1>
       </div>
-      <menu className="flex gap-8 sm:hidden">
+      <menu className="flex mx-4 gap-8 sm:hidden">
         <ClientAnimatePresence>
           {data.nav.map((item: any) => (
             <HeaderItem key={item.url} route={item.url} name={item.name} />

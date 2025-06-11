@@ -74,14 +74,14 @@ export default async function About({ params, searchParams }: pageProps) {
       <div className="flex items-center flex-col gap-8 sm:gap-4 relative z-50">
         <Image
           src={'/arb.png'}
-          alt="Arb Rahim Badsa"
+          alt="Jason Zhang"
           width={100}
           height={100}
           className="rounded-full"
         />
         <div className="">
           <h1 className="w-full text-[32px] sm:text-[24px] font-bold text-center">
-            Arb Rahim Badsa
+            Jason Zhang
           </h1>
           <p className="text-slate-500 text-balance text-center sm:text-sm sm:px-2">
             A self-taught full-stack Javascript Engineer

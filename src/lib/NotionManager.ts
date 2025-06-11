@@ -44,7 +44,6 @@ export class NotionManager {
   }
   async getPageById(id: string) {
     const cachedData = idCache.get(id);
-    console.log('getPageById', id, cachedData);
     if (cachedData) {
       return cachedData
     }
@@ -54,7 +53,6 @@ export class NotionManager {
   }
   async getMdStringById(id: string) {
     const cachedData = mdCache.get(id);
-    console.log('getMdStringById', id, cachedData);
     if (cachedData) {
       return cachedData
     }

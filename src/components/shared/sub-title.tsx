@@ -20,7 +20,7 @@ export default function SubTitle({
         className,
       )}
     >
-      <h2 className="text-[20px] font-bold leading-tight text-slate-800 sm:text-[16px]">
+      <h2 className="text-[24px] font-bold leading-tight text-slate-800 sm:text-[20px]">
         {title}
       </h2>
       <Link

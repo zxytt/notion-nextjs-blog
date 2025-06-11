@@ -59,7 +59,7 @@ export default function HeaderItem({
   if (isMobile) {
     return (
       <Link
-        className={`text-lg font-medium transition-colors ${
+        className={`text-lg font-medium transition-color ${
           pathname === route 
             ? "text-blue-500 relative pl-4 border-l-2 border-blue-500" 
             : "text-slate-700 hover:text-blue-500 pl-4"
@@ -74,7 +74,7 @@ export default function HeaderItem({
   // Desktop version (non-active)
   return (
     <Link
-      className="text-slate-600 sm:text-base leading-tight sm:flex-none sm:flex sm:justify-center"
+      className="text-slate-600 sm:text-base leading-tight sm:flex-none sm:flex justify-center hover:text-blue-500"
       href={route}
     >
       {name}

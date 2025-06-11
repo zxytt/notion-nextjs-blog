@@ -194,7 +194,7 @@ export default async function BlogPage({
             description,
             author: {
               '@type': 'Person',
-              name: 'Arb Rahim Badsa',
+              name: 'Jason Zhang',
             },
             publisher: {
               '@type': 'Organization',

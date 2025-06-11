@@ -74,17 +74,10 @@ const config = {
         },
       },
       screens: {
-        xl: { max: '1480px' },
-        // => @media (max-width: 1279px) { ... }
-
-        lg: { max: '1120px' },
-        // => @media (max-width: 1023px) { ... }
-
-        md: { max: '910px' },
-        // => @media (max-width: 767px) { ... }
-
-        sm: { max: '639px' },
-        // => @media (max-width: 639px) { ... }
+        xl: { max: '1280px' },
+        lg: { max: '980px' },
+        md: { max: '760px' },
+        sm: { max: '540px' },
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',

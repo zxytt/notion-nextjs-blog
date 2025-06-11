@@ -52,12 +52,8 @@ export default async function Blogs({
 
   const tagsWithLink = [
     { name: 'All', path: 'All' },
-    { name: 'Next.js', path: 'Next.js' },
-    { name: 'React.js', path: 'React.js' },
-    { name: 'TailwindCSS', path: 'TailwindCSS' },
-    { name: 'CSS', path: 'CSS' },
-    { name: 'Supabase', path: 'Supabase' },
-    { name: 'Firebase', path: 'Firebase' },
+    { name: 'Next.js', path: 'NextJs' },
+    { name: 'React.js', path: 'React' },
   ];
 
   return (

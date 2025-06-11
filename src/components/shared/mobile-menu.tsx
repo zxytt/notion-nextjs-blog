@@ -28,13 +28,13 @@ export default function MobileMenu({ data }: { data: any }) {
   };
   
   return (
-    <div className="hidden sm:block relative h-auto w-full border-b border-blue-100 z-50 bg-transparent backdrop-blur-sm bg-opacity-10 p-4">
+    <div className="hidden md:block relative h-auto w-full border-b border-blue-100 z-50 bg-transparent backdrop-blur-sm bg-opacity-10 p-4">
       <div className="flex items-center justify-between">
         <div className="flex gap-4 items-center">
           <Image
             className="rounded-full"
             src="/arb.png"
-            alt="A professional portrait of Arb Rahim Badsa"
+            alt="A professional portrait of Jason Zhang"
             height={40}
             width={40}
           />
@@ -53,7 +53,7 @@ export default function MobileMenu({ data }: { data: any }) {
                 <Image
                   className="rounded-full"
                   src="/arb.png"
-                  alt="A professional portrait of Arb Rahim Badsa"
+                  alt="A professional portrait of Jason Zhang"
                   height={36}
                   width={36}
                 />

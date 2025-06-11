@@ -8,27 +8,18 @@ import { SpeedInsights } from "@vercel/speed-insights/next"
 import { cn } from '@/lib/utils';
 
 export const metadata: Metadata = {
-  creator: 'Arb Rahim Badsa',
+  creator: 'Jason Zhang',
   category: 'technology',
-  applicationName: 'Arb Rahim Badsa',
-  description: `Discover the portfolio of Arb Rahim Badsa (Arbizen), a talented JavaScript developer with expertise in React.js, Next.js, TypeScript, Supabase, Figma, and more. Explore a range of projects showcasing Arbizen's skills in web development, blogs, liked images and more.`,
+  applicationName: 'Jason Zhang',
+  description: `Discover the portfolio of Jason Zhang (Arbizen), a talented JavaScript developer with expertise in React.js, Next.js, TypeScript, Supabase, Figma, and more. Explore a range of projects showcasing Arbizen's skills in web development, blogs, liked images and more.`,
   keywords: [
     'Portfolio',
-    'Arb Rahim Badsa',
-    'Arb Rahim Badsa Portfolio',
-    'Arb Rahim Badsa Blog',
-    'Arb Rahim Badsa Website',
-    'Arb Rahim Badsa Personal Website',
-    'Arb Rahim Badsa Projects',
-    'Arbizen Blog',
-    'Arbizen Website',
-    'Arbizen Portfolio',
-    'Arbizen Projects',
-    'Arb Blog',
-    'Arb Website',
-    'Arb Portfolio',
-    'Arb Projects',
-    'Arb Personal Website',
+    'Jason Zhang',
+    'Jason Zhang Portfolio',
+    'Jason Zhang Blog',
+    'Jason Zhang Website',
+    'Jason Zhang Personal Website',
+    'Jason Zhang Projects',
   ],
   metadataBase: new URL(process.env.NEXT_PUBLIC_API_URL!),
 };
@@ -40,7 +31,7 @@ export default async function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={cn(GeistSans.className, 'sm:overflow-x-hidden')}>
+      <body className={cn(GeistSans.className, 'flex flex-col items-center sm:overflow-x-hidden')}>
         <ThemeProvider
           defaultTheme="light"
           enableSystem

@@ -11,6 +11,7 @@ import { getDictionary } from './dictionaries';
 import { supportedLocales } from '@/data/site/supportedLocales';
 import { cookies } from 'next/headers';
 import Circles from '@/components/circles';
+import { Suspense } from 'react';
 
 export const metadata: Metadata = {
   alternates: {
@@ -35,32 +36,32 @@ export default async function RootLayout({
     : cookies().get('lang')?.value ?? 'en';
   const { header } = supportedLang && (await getDictionary(supportedLang));
   return (
-    <>
-      {/* <Header data={header} className="hidden sm:flex rounded-none" /> */}
+    <div className="w-full max-w-[70rem] px-4 md:px-0">
       <MobileMenu data={header} />
-
-      <main className="relative max-w-[1024px] m-auto flex flex-col bg-white sm:px-4 sm:pb-4 sm:pt-0 sm:overflow-x-hidden">
-        <Header data={header} className="sm:hidden sticky top-0 z-100" />
+      <main className="md:px-4 md:overflow-x-hidden" >
+        <Header data={header} className="md:hidden sticky top-4 z-100" />
         <Blob
           y="80px"
-          className="left-[300px] sm:left-[50px] sm:h-[100px] sm:w-[100px] z-0"
+          className="left-[200px] lg:left-[50px] lg:h-[100px] lg:w-[100px] z-0"
         />
         <Blob
-          className="right-[64px] top-[130px] sm:right-[32px] sm:h-[100px] sm:w-[100px] z-0"
+          className="right-[200px] top-[130px] lg:right-[32px] lg:h-[100px] lg:w-[100px] z-0"
           type="blob2"
           fill="#22C55E"
         />
         <Blob
-          className="right-[300px] top-[440px] sm:right-[100px] sm:h-[100px] sm:w-[100px] z-0 opacity-40"
+          className="right-[300px] top-[440px] lg:right-[100px] lg:h-[100px] lg:w-[100px] z-0 opacity-40"
           type="blob3"
           fill="#A855F7"
         />
         {/* <Circles /> */}
-        <div className="flex-grow min-h-screen sm:overflow-x-hidden">
-          {children}
-        </div>
+        <Suspense>
+          <div className="flex-grow min-h-screen md:overflow-x-hidden">
+            {children}
+          </div>
+        </Suspense>
         <Footer text={footer.text} socials={footer.socials} />
       </main>
-    </>
+    </div>
   );
 }

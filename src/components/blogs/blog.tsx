@@ -10,32 +10,37 @@ import dateformat from "dateformat";
 export default function Blog(props: BlogType) {
     return (
       <Card>
-        <div className="flex gap-8 md:flex-col">
+        <div className="flex md:flex-col rounded-xl overflow:hidden border">
           <Link className="flex-none" href={`/${props.lang}/blogs/${props.slug}`}>
             <Image
               src={props.image!}
               alt="blog"
-              width={300}
-              height={200}
-              className="rounded-md h-[200px]"
+              width={350}
+              height={209}
+              className="rounded-l-xl md:rounded-t-xl max-h-[209px] md:w-full"
               placeholder="blur"
               blurDataURL="/blur-placeholder.png"
             />
           </Link>
-          <div className="flex flex-col justify-between gap-4 grow">
+          <div className="flex flex-col justify-between gap-4 grow py-4 px-6 md:px-2">
             <Link
               href={`/${props.lang}/blogs/${props.slug}`}
               className="hover:underline"
             >
-              <h3 className="text-[24px] font-extrabold leading-tight sm:text-2xl sm:font-bold">
+              <h3 className="text-[20px] font-extrabold leading-tight sm:text-lg sm:font-bold truncate">
                 {props.title}
               </h3>
             </Link>
             <div className="flex gap-2 flex-wrap">
               {props?.categories?.map((category: string) => (
-                <Badge key={category} className="bg-red-100 text-red-500">
+                // <Link
+                // href={`/${props.lang}/blogs?page=1&category=${category}`}
+                // key={category}
+                // >
+                  <Badge key={category} className="bg-red-100 text-red-500">
                   {category}
-                </Badge>
+                  </Badge>
+                // </Link>
               ))}
             </div>
             <p className="font-medium text-slate-600">{props.description}</p>

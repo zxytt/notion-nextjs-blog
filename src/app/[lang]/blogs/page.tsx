@@ -54,17 +54,11 @@ export default async function Blogs({
 
   const tagsWithLink = [
     { name: 'All', path: 'All' },
+    { name: 'Full Stack', path: 'Full Stack' },
     { name: 'NextJs', path: 'NextJs' },
-    { name: 'ReactJs', path: 'ReactJs' },
-    { name: 'Frontend', path: 'Frontend' },
-    { name: 'Backend', path: 'Backend' },
-    { name: 'Supabase', path: 'Supabase' },
-    { name: 'Story', path: 'Story' },
-    { name: 'Textile', path: 'Textile' },
-    { name: 'Uncategorized', path: 'Uncategorized' },
-    { name: 'GraphQL', path: 'GraphQL' },
-    { name: 'Typescript', path: 'Typescript' },
-    { name: 'Popular', path: 'Popular' },
+    { name: 'ReactJs', path: 'React' },
+    { name: 'Vue', path: 'Vue' },
+    { name: 'Node', path: 'Node' },
   ];
 
   return (

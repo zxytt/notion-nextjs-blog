@@ -24,15 +24,15 @@ import PublicFeedbackList from '@/components/feedback/public-feedback-list';
 import Project from './projects/project'
 
 export const metadata = {
-  title: `Home — Arb Rahim Badsa's Activities and Portfolio`,
-  description: `Discover the portfolio of Arb Rahim Badsa (Arbizen), a talented JavaScript developer with expertise in React.js, Next.js, TypeScript, Supabase, Figma, and more. Explore a range of projects showcasing Arbizen's skills in web development, blogs, liked images and more.`,
+  title: `Home — Jason Zhang's Activities and Portfolio`,
+  description: `Discover the portfolio of Jason Zhang, a talented JavaScript developer with expertise in React.js, Next.js, TypeScript, Supabase, Figma, and more. Explore a range of projects showcasing Arbizen's skills in web development, blogs, liked images and more.`,
 };
 
 const siteJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'WebSite',
-  name: 'Arbizen',
-  alternateName: ['Arb', 'Arb Rahim Badsa'],
+  name: 'Jason',
+  alternateName: ['Jason Zhang'],
   url: process.env.NEXT_PUBLIC_API_URL!,
   potentialAction: {
     '@type': 'SearchAction',
@@ -44,25 +44,29 @@ const siteJsonLd = {
   },
 };
 
-export const dynamic = 'force-dynamic';
+export const dynamic = 'auto';
+
+async function getProjects() {
+  const projectsName = `projects`;
+  const projectsPagination = new Pagination({ limit: 3 }, projectsName);
+  const projectsData = await projectsPagination.getCurrentPageData('desc');
+  return projectsData[projectsName]?.data;
+}
+
+async function getBlogs() {
+  const blogsName = `blogs`;
+  const blogsPagination = new Pagination({ limit: 3 }, blogsName);
+  const blogsData = await blogsPagination.getCurrentPageData('desc');
+  return blogsData[blogsName]?.data;
+}
 
 export default async function Home({
   params: { lang },
 }: {
   params: { lang: string };
 }) {
-
-  const pageName = `projects`;
-  const pagination = new Pagination({ limit: 3 }, pageName);
-  const data = await pagination.getCurrentPageData('desc');
-
-  const projects = data[pageName]?.data;
-
-  const blogs = 'blogs';
-  const paginationBlogs = new Pagination({ limit: 3 }, blogs);
-  const dataBlogs = await paginationBlogs.getCurrentPageData('desc');
-  const blogsData: BlogType[] = dataBlogs[blogs]?.data;
-
+  const [projects, blogs] = await Promise.all([getProjects(), getBlogs()]);
+  
   const supportedLang = supportedLocales.includes(lang)
     ? lang
     : (cookies().get('lang')?.value ?? 'en');
@@ -71,7 +75,7 @@ export default async function Home({
 
   return (
     <PageAnimation>
-      <div className="flex items-start w-full sm:flex-wrap">
+      <div className="flex items-start w-full sm:flex-wrap mt-4">
         <PageInfo
           breadcumb={
             <Breadcumb
@@ -124,8 +128,8 @@ export default async function Home({
         />
       </div>
       <div className="mt-4 w-full">
-        <div className="grid grid-cols-1 gap-4">
-          {blogsData?.map((blog: BlogType) => {
+        <div className="grid md:grid-cols-2 grid-cols-1 gap-4">
+          {blogs?.map((blog: BlogType) => {
             if (blog.isPublished === false) return null;
             return (
               <Blog
@@ -153,7 +157,7 @@ export default async function Home({
         />
       </div>
       <div className="mt-4 w-full">
-        <div className="grid grid-cols-1 gap-4">
+        <div className="grid md:grid-cols-2 grid-cols-1 gap-4">
           {projects.map((project: any) => (
             <Project key={project.id} {...project} lang={lang} />
           ))}
