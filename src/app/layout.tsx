@@ -31,6 +31,9 @@ export default async function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <script defer src="https://umami-five-iota.vercel.app/script.js" data-website-id="b97e0344-54d4-4e06-b723-dddaa0e5b793"></script>
+      </head>
       <body className={cn(GeistSans.className, 'flex flex-col items-center sm:overflow-x-hidden')}>
         <ThemeProvider
           defaultTheme="light"
