@@ -133,3 +133,19 @@
   scrollbar-width: thin;
   scrollbar-color: hsl(var(--primary) / 0.3) hsl(var(--secondary) / 0.5);
 }
+
+.prose h1 {
+  font-size: 1.75rem;
+}
+
+.prose h2 {
+  font-size: 1.5rem;
+}
+
+.prose h3 {
+  font-size: 1.25rem;
+}
+
+.bg-image img {
+  height: inherit;
+}

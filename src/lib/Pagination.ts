@@ -34,7 +34,9 @@ export default class Pagination {
     }
 
     const res = await fetch(url, {
-      cache: 'force-cache',
+      next: {
+        revalidate: 60 * 60, // 1小时后重新验证
+      },
     });
     const data = await res.json();
 

@@ -12,14 +12,14 @@ import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import PageInfo from '@/components/shared/page-info';
 import PageTitle from '@/components/shared/page-title';
 import Badge from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
 import { Metadata, ResolvingMetadata } from 'next';
-import { motion } from 'framer-motion';
+import { ArrowLeft } from 'lucide-react';
+import Link from "next/link";
 
 // @ts-ignore
 import dateformat from 'dateformat';
 import { notFound } from 'next/navigation';
-import ClientAnimatePresence from '@/components/client-animate-presence';
-import ClientMotionDiv from '@/components/client-motion-div';
 import PageAnimation from '@/components/page-animation';
 
 export const dynamic = 'force-dynamic';
@@ -130,6 +130,8 @@ export default async function BlogPage({
   const readTime = (pageInfo as any)?.properties?.readTime?.number || 0;
   const date = (pageInfo as any)?.properties?.createdAt?.created_time || '';
 
+  
+
   const customComponents = {
     code: CodeBlock,
     pre: Pre,
@@ -137,15 +139,19 @@ export default async function BlogPage({
     p: Paragraph,
   };
 
-  const animation = {
-    transition: { duration: 0.2 },
-    initial: { opacity: 0, y: 20 },
-    animate: { opacity: 1, y: 0 },
-    exit: { opacity: 0, y: -20 },
-  };
-
   return (
     <PageAnimation>
+      <Link
+        href={`/${params.lang}/blogs`}
+      >
+        <Button 
+          variant="outline" 
+          size="sm"
+          className="mt-8 self-start bg-background/80 backdrop-blur-sm animate-slide-in transition-all duration-200 hover:scale-105 hover:shadow-md"
+        >
+          <ArrowLeft className="mr-2 h-4 w-4" />Back
+        </Button>
+      </Link>
       <PageInfo
         header={<PageTitle title={title} />}
         description={description}
@@ -165,11 +171,13 @@ export default async function BlogPage({
           </div>
         }
       />
-      <div className="flex flex-col px-[15px] relative z-50">
+      <div className="flex flex-col relative z-50">
         <Image
           src={coverUrl}
           alt={title}
-          className="max-h-[800px] object-cover rounded-md"
+          className="max-h-[450px] object-cover rounded-xl"
+          quality={60}
+          priority={true}
         />
         <article className="flex justify-center mt-16 min-w-[800px] sm:min-w-full">
           <Markdown
@@ -180,7 +188,7 @@ export default async function BlogPage({
           >
             {typeof mdString === 'string' ? mdString : JSON.stringify(mdString)}
           </Markdown>
-        </article>
+        </article>  
       </div>
       <script
         type="application/ld+json"

@@ -18,7 +18,7 @@ export function Tag({
   return (
     <div
       className={cn(
-        'rounded text-base sm:text-sm leading-tight border-slate-200 hover:border-slate-800 border p-2.5 sm:p-1.5 sm:px-2 cursor-pointer',
+        'whitespace-nowrap rounded text-base sm:text-sm leading-tight border-slate-200 hover:border-slate-800 border p-2.5 sm:p-1.5 sm:px-2 cursor-pointer',
         className,
       )}
     >

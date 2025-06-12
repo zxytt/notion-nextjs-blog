@@ -12,17 +12,23 @@ export default function Blog(props: BlogType) {
       <Card>
         <div className="flex md:flex-col rounded-xl overflow:hidden border">
           <Link className="flex-none" href={`/${props.lang}/blogs/${props.slug}`}>
-            <Image
-              src={props.image!}
-              alt="blog"
-              width={350}
-              height={209}
-              className="rounded-l-xl md:rounded-t-xl max-h-[209px] md:w-full"
-              placeholder="blur"
-              blurDataURL="/blur-placeholder.png"
-            />
+            <div className="bg-image relative overflow-hidden h-[209px] rounded-l-xl md:rounded-none md:rounded-t-xl">
+              <Image
+                src={props.image!}
+                alt="blog"
+                width={350}
+                height={209}
+                className="object-cover md:w-full transition-all duration-700 ease-out group-hover:scale-110 group-hover:brightness-110"
+                placeholder="blur"
+                blurDataURL="/blur-placeholder.png"
+                quality={60} 
+                priority={true}
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent md:hidden" />
+              <div className="absolute inset-0 bg-primary/0  transition-all duration-300" />
+            </div>
           </Link>
-          <div className="flex flex-col justify-between gap-4 grow py-4 px-6 md:px-2">
+          <div className="flex flex-col justify-between gap-4 grow pt-4 pb-2 px-6 md:px-2">
             <Link
               href={`/${props.lang}/blogs/${props.slug}`}
               className="hover:underline"
@@ -33,17 +39,17 @@ export default function Blog(props: BlogType) {
             </Link>
             <div className="flex gap-2 flex-wrap">
               {props?.categories?.map((category: string) => (
-                // <Link
-                // href={`/${props.lang}/blogs?page=1&category=${category}`}
-                // key={category}
-                // >
+                <Link
+                  href={`/${props.lang}/blogs?page=1&category=${category}`}
+                  key={category}
+                >
                   <Badge key={category} className="bg-red-100 text-red-500">
                   {category}
                   </Badge>
-                // </Link>
+                </Link>
               ))}
             </div>
-            <p className="font-medium text-slate-600">{props.description}</p>
+            <p className="text-base leading-tight font-medium text-slate-600 w-full line-clamp-2">{props.description}</p>
             <div className="flex justify-between">
               <div>
                 <span className="mr-2 text-xs text-slate-600">

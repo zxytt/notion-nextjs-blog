@@ -1,16 +1,9 @@
-import Card from '@/components/card';
 import PageInfo from '@/components/shared/page-info';
 import PageTitle from '@/components/shared/page-title';
-import Badge from '@/components/ui/badge';
-import { ArrowRight, BadgeEuro } from 'lucide-react';
-import Image from 'next/image';
 import Link from 'next/link';
-import Subtitle from '@/components/shared/sub-title';
-import { Blog, Project as ProjectType } from '@/types';
+import { Project as ProjectType } from '@/types';
 // @ts-ignore
-import dateformat from 'dateformat';
 import { Tag, TagContainer } from '@/components/tag';
-import Chip from '@/components/chip';
 import { getDictionary } from '../dictionaries';
 import Breadcumb from '@/components/shared/breadcumb';
 import Pagination from '@/lib/Pagination';
@@ -18,7 +11,7 @@ import PaginationNavigation from '@/components/shared/pagination-navigation';
 import PageAnimation from '@/components/page-animation';
 import { supportedLocales } from '@/data/site/supportedLocales';
 import { cookies } from 'next/headers';
-import Project from './project';
+import Project from '@/components/Projects/project';
 
 export const dynamic = 'force-dynamic';
 

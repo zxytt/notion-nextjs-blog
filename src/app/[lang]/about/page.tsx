@@ -1,9 +1,8 @@
 import PageInfo from '@/components/shared/page-info';
-import PageTitle from '@/components/shared/page-title';
 import Breadcumb from '@/components/shared/breadcumb';
 import { getDictionary } from '../dictionaries';
 import Image from 'next/image';
-import { Clock, LocateIcon, Map, MapPin } from 'lucide-react';
+import { Clock, MapPin } from 'lucide-react';
 // @ts-ignore
 import dateformat from 'dateformat';
 import { notionManager } from '@/lib/NotionManager';
@@ -18,8 +17,6 @@ import Pre from '@/components/markdown/Pre';
 import MarkDownImage from '@/components/markdown/Image';
 import Paragraph from '@/components/markdown/Paragraph';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
-import Badge from '@/components/ui/badge';
-import { Metadata, ResolvingMetadata } from 'next';
 import Card from '@/components/card';
 import PageAnimation from '@/components/page-animation';
 import { supportedLocales } from '@/data/site/supportedLocales';

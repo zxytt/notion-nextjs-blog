@@ -1,27 +1,19 @@
-import Card from '@/components/card';
 import PageInfo from '@/components/shared/page-info';
 import SubTitle from '@/components/shared/sub-title';
-import Badge from '@/components/ui/badge';
-import { Activity, Blog as BlogType, ImageType, Feedback } from '@/types';
-import { ArrowRight, Download, Subtitles } from 'lucide-react';
+import { Blog as BlogType } from '@/types';
+import { ArrowRight, Download } from 'lucide-react';
 import Link from 'next/link';
 import { getDictionary } from './dictionaries';
 import Breadcumb from '@/components/shared/breadcumb';
 import Pagination from '@/lib/Pagination';
 // @ts-ignore
-import dateformat from 'dateformat';
 import PageAnimation from '@/components/page-animation';
 import Script from 'next/script';
 import { supportedLocales } from '@/data/site/supportedLocales';
 import { cookies } from 'next/headers';
 import Blog from '@/components/blogs/blog';
-import Image from 'next/image';
-import Circles from '@/components/circles';
 import { SkillBeam } from '@/components/skill-beam';
-import CustomImage from '@/components/gallery-image';
-import { Client } from '@notionhq/client';
-import PublicFeedbackList from '@/components/feedback/public-feedback-list';
-import Project from './projects/project'
+import Project from '@/components/Projects/project'
 
 export const metadata = {
   title: `Home — Jason Zhang's Activities and Portfolio`,
@@ -44,7 +36,7 @@ const siteJsonLd = {
   },
 };
 
-export const dynamic = 'auto';
+export const dynamic = 'force-dynamic';
 
 async function getProjects() {
   const projectsName = `projects`;
@@ -87,7 +79,7 @@ export default async function Home({
           }
           header={
             <div>
-              <h1 className="font-black text-[40px] sm:text-[36px]">
+              <h1 className="font-black text-[30px] sm:text-[24px]">
                 {dictionary.page.home.name.first}{' '}
                 <span className="text-blue-500">
                   {dictionary.page.home.name.second}
@@ -97,7 +89,7 @@ export default async function Home({
           }
           description={dictionary.page.home.description}
           footer={
-            <div className="flex flex-row gap-4 sm:gap-4">
+            <div className="flex flex-row gap-4 mt-4">
               <Link
                 className="flex gap-1 items-center text-blue-500 font-bold text-[14px]"
                 href="/about"
@@ -128,7 +120,7 @@ export default async function Home({
         />
       </div>
       <div className="mt-4 w-full">
-        <div className="grid md:grid-cols-2 grid-cols-1 gap-4">
+        <div className="grid grid-cols-1 gap-4">
           {blogs?.map((blog: BlogType) => {
             if (blog.isPublished === false) return null;
             return (
@@ -157,7 +149,7 @@ export default async function Home({
         />
       </div>
       <div className="mt-4 w-full">
-        <div className="grid md:grid-cols-2 grid-cols-1 gap-4">
+        <div className="grid grid-cols-1 gap-4">
           {projects.map((project: any) => (
             <Project key={project.id} {...project} lang={lang} />
           ))}

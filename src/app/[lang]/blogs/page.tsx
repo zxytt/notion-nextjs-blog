@@ -1,18 +1,11 @@
-import Card from '@/components/card';
 import PageInfo from '@/components/shared/page-info';
 import PageTitle from '@/components/shared/page-title';
-import Badge from '@/components/ui/badge';
-import { ArrowRight } from 'lucide-react';
-import Image from 'next/image';
 import Link from 'next/link';
-import Subtitle from '@/components/shared/sub-title';
 import { Blog as BlogType } from '@/types';
 // @ts-ignore
-import dateformat from 'dateformat';
 import { Tag, TagContainer } from '@/components/tag';
 import { getDictionary } from '../dictionaries';
 import Breadcumb from '@/components/shared/breadcumb';
-import { useMemo } from 'react';
 import Pagination from '@/lib/Pagination';
 import PaginationNavigation from '@/components/shared/pagination-navigation';
 import PageAnimation from '@/components/page-animation';

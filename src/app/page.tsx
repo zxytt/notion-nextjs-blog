@@ -1,8 +1,4 @@
-import Card from '@/components/card';
 import PageInfo from '@/components/shared/page-info';
-import SubTitle from '@/components/shared/sub-title';
-import Badge from '@/components/ui/badge';
-import { Activity } from '@/types';
 import { ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 
@@ -19,7 +15,7 @@ export default async function Home() {
       <PageInfo
         header={
           <div>
-            <h1 className="font-black text-[40px] sm:text-[36px]">
+            <h1 className="font-black text-[30px] sm:text-[24px]">
               I <span className="text-blue-500">code.</span>
             </h1>
           </div>

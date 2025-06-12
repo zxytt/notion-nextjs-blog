@@ -56,7 +56,7 @@ export default async function RootLayout({
         />
         {/* <Circles /> */}
         <Suspense>
-          <div className="flex-grow min-h-screen md:overflow-x-hidden">
+          <div className="flex-grow md:overflow-x-hidden">
             {children}
           </div>
         </Suspense>

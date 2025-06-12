@@ -37,7 +37,7 @@ export function SkillBeam() {
 
   return (
     <div
-      className="relative flex h-[306px] pb-4 sm:h-[300px] sm:mb-8 items-center justify-center overflow-hidden w-full"
+      className="relative flex h-[275px] pb-4 sm:h-[275px] sm:mb-8 items-center justify-center overflow-hidden w-full"
       ref={containerRef}
     >
       <div className="flex size-full flex-col max-w-lg max-h-[200px] items-stretch justify-between gap-10">

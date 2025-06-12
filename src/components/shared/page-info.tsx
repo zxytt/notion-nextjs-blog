@@ -1,6 +1,4 @@
 import React from 'react';
-import Breadcumb from './breadcumb';
-import PageInfoSkeleton from './page-info-skeleton';
 import Badge from '../ui/badge';
 
 interface PageInfoProps {
@@ -18,9 +16,9 @@ export default function PageInfo({
   itemsLength,
 }: PageInfoProps) {
   return (
-    <div className="flex flex-col my-6 gap-4 sm:pl-[15px] sm:gap-4 sm:mt-8 sm:mb-8 relative z-50">
+    <div className="flex flex-col mt-6 mb-6 gap-4 sm:pl-[15px] sm:gap-4 relative z-50">
       {/* {breadcumb} */}
-      <div className="flex flex-col gap-2 sm:gap-2 relative z-50">
+      <div className="flex flex-col gap-8 sm:gap-2 relative z-50">
         <div className="flex gap-2 items-center">
           {header}
           {itemsLength !== undefined && (
