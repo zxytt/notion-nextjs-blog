@@ -1,9 +1,7 @@
-import { SITE_NAME, headerItems } from '@/data/header';
 import Image from 'next/image';
 import Link from 'next/link';
 import HeaderItem from './header-item';
 import { cn } from '@/lib/utils';
-import { Globe } from 'lucide-react';
 
 import ClientAnimatePresence from '../client-animate-presence';
 import LanguageSelector from './language-selector';

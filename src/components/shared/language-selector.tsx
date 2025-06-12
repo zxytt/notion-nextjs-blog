@@ -10,13 +10,9 @@ import {
   DropdownMenuPortal,
   DropdownMenuSeparator,
   DropdownMenuShortcut,
-  DropdownMenuSub,
-  DropdownMenuSubContent,
-  DropdownMenuSubTrigger,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { usePathname, useSearchParams } from 'next/navigation';
-import { supportedLocales } from '@/data/site/supportedLocales';
 export default function LanguageSelector() {
   const pathName = usePathname();
   const searchParams = useSearchParams();
