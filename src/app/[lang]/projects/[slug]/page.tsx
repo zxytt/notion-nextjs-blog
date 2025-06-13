@@ -172,8 +172,6 @@ export default async function ProjectPage({
           alt={title}
           className="max-h-[800px] object-cover rounded-md"
           quality={60}
-          placeholder="blur"
-          blurDataURL="/blur-placeholder.png"
         />
         <article className="flex justify-center mt-16 min-w-[800px] sm:min-w-full">
           <Markdown
