@@ -3,7 +3,7 @@ import { Skeleton } from '@/components/ui/skeleton';
 
 const BlogSkeleton = () => {
   return (
-    <div className="p-16 sm:p-8 border border-blue-100 rounded-md">
+    <div className="p-4 sm:p-8 border border-blue-100 rounded-md">
       <div className="flex gap-8 sm:flex-col">
         <Skeleton className="w-full h-[240px] rounded-md" />
         <div className="flex flex-col gap-6">

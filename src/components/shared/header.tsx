@@ -39,9 +39,9 @@ export default function Header({
           ))}
         </ClientAnimatePresence>
       </menu>
-      <menu className="flex gap-8">
+      {/* <menu className="flex gap-8">
         <LanguageSelector />
-      </menu>
+      </menu> */}
     </header>
   );
 }

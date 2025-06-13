@@ -73,12 +73,12 @@ export default function MobileMenu({ data }: { data: any }) {
               ))}
             </nav>
             
-            <SheetFooter className="mt-auto pt-6 border-t">
+            {/* <SheetFooter className="mt-auto pt-6 border-t">
               <div className="flex items-center justify-between w-full">
                 <span className="text-sm text-slate-500">Language</span>
                 <LanguageSelector />
               </div>
-            </SheetFooter>
+            </SheetFooter> */}
           </SheetContent>
         </Sheet>
       </div>

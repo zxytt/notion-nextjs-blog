@@ -177,7 +177,8 @@ export default async function BlogPage({
           alt={title}
           className="max-h-[450px] object-cover rounded-xl"
           quality={60}
-          priority={true}
+          placeholder="blur"
+          blurDataURL="/blur-placeholder.png"
         />
         <article className="flex justify-center mt-16 min-w-[800px] sm:min-w-full">
           <Markdown

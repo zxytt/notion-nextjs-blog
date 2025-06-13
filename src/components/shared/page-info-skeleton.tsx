@@ -2,7 +2,7 @@ import React from 'react';
 import { Skeleton } from '../ui/skeleton';
 export default function PageInfoSkeleton() {
   return (
-    <div className="flex flex-col my-4 gap-8 sm:pl-[15px] sm:gap-4 sm:mt-8 sm:mb-8 w-full">
+    <div className="flex flex-col my-8 gap-8 sm:pl-[15px] sm:gap-4 sm:mt-8 sm:mb-8 w-full">
       <Skeleton className="h-4 w-[100px] rounded-md" />
       <div className="flex flex-col gap-4 sm:gap-2">
         <Skeleton className="h-8 w-[200px] rounded-md" />
